@@ -5,6 +5,7 @@ import os
 from models.base_model import BaseModel
 from models.user import User
 
+
 class FileStorage:
     """
     A class for managing file storage of objects in JSON format.
@@ -33,7 +34,7 @@ class FileStorage:
             dict: A dictionary containing all stored objects.
         """
         return FileStorage.__objects
-    
+
     def save(self):
         """
         Serializes the object dictionary to JSON format and saves it to a file.
@@ -61,4 +62,3 @@ class FileStorage:
                         FileStorage.__objects[key] = instance
                 except Exception:
                     pass
-
