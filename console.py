@@ -96,7 +96,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """
-        Display all instances of a specified class.
+        Display all instances of a specified class or all instances.
 
         Args:
             arg (str): Optional class name.
@@ -110,17 +110,20 @@ class HBNBCommand(cmd.Cmd):
         elif line[0] not in self.allowed_classes:
             print("** class doesn't exist **")
         else:
-            for key, value in objects.items():
-                if key.split('.')[0] == line[0]:
-                    print(str(value))
+            # Retrieve all instances of the specified class
+            instances = storage.all()[line[0]]
+            if instances:
+                print([str(instance) for instance in instances])
+            else:
+                print("** no instance found **")
 
     def do_update(self, arg):
         """
         Update an instance attribute.
 
         Args:
-            arg (str): Class name, instance ID, attribute name,
-            and attribute value.
+            arg (str): Class name, instance ID,
+            attribute name, and attribute value.
 
         """
         line = shlex.split(arg)
