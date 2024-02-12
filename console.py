@@ -119,7 +119,8 @@ class HBNBCommand(cmd.Cmd):
         Update an instance attribute.
 
         Args:
-            arg (str): Class name, instance ID, attribute name, and attribute value.
+            arg (str): Class name, instance ID, attribute name,
+            and attribute value.
 
         """
         line = shlex.split(arg)
