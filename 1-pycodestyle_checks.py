@@ -12,6 +12,7 @@ class Book:
     def __str__(self):
         return f"{self.title} by {self.author}"
 
+
 class LibraryCatalog:
     """
     Represents a library catalog.
@@ -38,7 +39,11 @@ class LibraryCatalog:
         Returns:
             list: A list of books matching the title.
         """
-        return [book for book in self.books if book.title.lower() == title.lower()]
+        matching_books = []
+        for book in self.books:
+            if book.title.lower() == title.lower():
+                matching_books.append(book)
+        return matching_books
 
     def search_by_author(self, author):
         """
@@ -50,7 +55,11 @@ class LibraryCatalog:
         Returns:
             list: A list of books written by the author.
         """
-        return [book for book in self.books if book.author.lower() == author.lower()]
+        matching_books = []
+        for book in self.books:
+            if book.author.lower() == author.lower():
+                matching_books.append(book)
+        return matching_books
 
     def search_by_isbn(self, isbn):
         """
@@ -62,10 +71,15 @@ class LibraryCatalog:
         Returns:
             list: A list of books matching the ISBN.
         """
-        return [book for book in self.books if book.isbn == isbn]
+        matching_books = []
+        for book in self.books:
+            if book.isbn == isbn:
+                matching_books.append(book)
+        return matching_books
+
 
 if __name__ == "__main__":
-    # Example usage
+    # Example of code implimentation
     library = LibraryCatalog()
     book1 = Book("The Great Gatsby", "F. Scott Fitzgerald", "978-0743273565")
     book2 = Book("To Kill a Mockingbird", "Harper Lee", "978-0061120084")
